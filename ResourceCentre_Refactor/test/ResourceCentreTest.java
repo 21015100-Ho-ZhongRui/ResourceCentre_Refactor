@@ -135,6 +135,7 @@ public class ResourceCentreTest {
 		
 	}
 	
+	//test
 	@Test
 	public void testDoLoanChromebook() {
 		//boundary
