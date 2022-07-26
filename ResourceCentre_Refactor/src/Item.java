@@ -18,8 +18,9 @@ public class Item {
 				description, 
 				showAvailability(isAvailable), 
 				dueDate);
-		return itemInfo;
+		return itemInfo;	
 	}
+	
 	
 	public  String showAvailability(boolean isAvailable) {
 		String avail;

@@ -32,6 +32,7 @@ public class ResourceCentre {
 
 			} 
 			else if (option == OPTION_ADD) {
+			} else if (option == OPTION_ADD) {
 				// Add a new item
 				ResourceCentre.setHeader("ADD");			
 				itemTypeMenu();
@@ -56,6 +57,7 @@ public class ResourceCentre {
 
 			} 
 			else if (option == OPTION_LOAN) {
+			} else if (option == OPTION_LOAN) {
 				// Loan item
 				ResourceCentre.setHeader("LOAN");			
 				itemTypeMenu();
@@ -98,7 +100,7 @@ public class ResourceCentre {
 
 	}
 
-	public static void itemTypeMenu() {
+	private static void itemTypeMenu() {
 		ResourceCentre.setHeader("ITEM TYPES");
 		System.out.println("1. Camcorder");
 		System.out.println("2. Chromebook");
@@ -129,6 +131,7 @@ public class ResourceCentre {
 		for (int i = 0; i < camcorderList.size(); i++) {
 
 			output += String.format("%-84s\n", camcorderList.get(i).toString());
+			output += String.format("%-84s\n",camcorderList.get(i).toString());
 		}
 		return output;
 	}
@@ -146,6 +149,7 @@ public class ResourceCentre {
 		for (int i = 0; i < chromebookList.size(); i++) {
 
 			output += String.format("%-84s\n", chromebookList.get(i).toString());
+			output += String.format("%-84s \n", chromebookList.get(i).toString());
 		}
 		return output;
 	}
@@ -158,7 +162,7 @@ public class ResourceCentre {
 		System.out.println(output);
 	}
 
-	//================================= Option 2 Add (CRUD - Create)=================================
+	//================================= Option 2 Add (CRUD - Create)==================================
 	public static Camcorder inputCamcorder() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
@@ -232,7 +236,6 @@ public class ResourceCentre {
 			String assetTag = chromebookList.get(i).getAssetTag();
 			
 			if (tag.equalsIgnoreCase(assetTag)
-					
 					&& chromebookList.get(i).getIsAvailable() == true) {
 				
 				chromebookList.get(i).setIsAvailable(false);
@@ -292,7 +295,8 @@ public class ResourceCentre {
 		boolean isReturned = false;
 
 		for (int i = 0; i < chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+			String assetTag = chromebookList.get(i).getAssetTag();
+			if (tag.equalsIgnoreCase(assetTag)
 					&& chromebookList.get(i).getIsAvailable() == false) {
 				chromebookList.get(i).setIsAvailable(true);
 				chromebookList.get(i).setDueDate("");
