@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class ResourceCentre {
 
-	private static final int OPTION_VIEW = 1;
-	private static final int OPTION_ADD = 2;
-	private static final int OPTION_LOAN = 3;
+
 	private static final int OPTION_RETURN = 4;
+	private static final int OPTION_LOAN = 3;
+	private static final int OPTION_ADD = 2;
+	private static final int OPTION_VIEW = 1;
 	private static final int OPTION_QUIT = 5;
-	
 	public static void main(String[] args) {
 
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
@@ -19,7 +19,7 @@ public class ResourceCentre {
 		chromebookList.add(new Chromebook("CB002", "HP Chromebook", "Win 10"));
 
 		int option = 0;
-
+// Demo CI/CD
 		while (option != OPTION_QUIT) {
 
 			ResourceCentre.menu();
@@ -30,8 +30,6 @@ public class ResourceCentre {
 				ResourceCentre.viewAllCamcorder(camcorderList);
 				ResourceCentre.viewAllChromebook(chromebookList);
 
-			} 
-			else if (option == OPTION_ADD) {
 			} else if (option == OPTION_ADD) {
 				// Add a new item
 				ResourceCentre.setHeader("ADD");			
@@ -55,8 +53,6 @@ public class ResourceCentre {
 					System.out.println("Invalid type");
 				}
 
-			} 
-			else if (option == OPTION_LOAN) {
 			} else if (option == OPTION_LOAN) {
 				// Loan item
 				ResourceCentre.setHeader("LOAN");			
@@ -122,16 +118,14 @@ public class ResourceCentre {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-	
+
 
 	//================================= Option 1 View (CRUD - Read) =================================
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		String output = "";
 
-		for (int i = 0; i < camcorderList.size(); i++) {
-
+		for (int i = 0; i < camcorderList.size(); i++) {	
 			output += String.format("%-84s\n", camcorderList.get(i).toString());
-			output += String.format("%-84s\n",camcorderList.get(i).toString());
 		}
 		return output;
 	}
@@ -147,9 +141,7 @@ public class ResourceCentre {
 		String output = "";
 		// write your code here
 		for (int i = 0; i < chromebookList.size(); i++) {
-
 			output += String.format("%-84s\n", chromebookList.get(i).toString());
-			output += String.format("%-84s \n", chromebookList.get(i).toString());
 		}
 		return output;
 	}
@@ -162,7 +154,7 @@ public class ResourceCentre {
 		System.out.println(output);
 	}
 
-	//================================= Option 2 Add (CRUD - Create)==================================
+	//================================= Option 2 Add (CRUD - Create)=================================
 	public static Camcorder inputCamcorder() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
@@ -228,14 +220,13 @@ public class ResourceCentre {
 	
 
 	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
-		// comments: write your code here
+		// write your code here
 		boolean isLoaned = false;
 
 		for (int i = 0; i < chromebookList.size(); i++) {
 
-			String assetTag = chromebookList.get(i).getAssetTag();
-			
-			if (tag.equalsIgnoreCase(assetTag)
+			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+					
 					&& chromebookList.get(i).getIsAvailable() == true) {
 				
 				chromebookList.get(i).setIsAvailable(false);
@@ -266,8 +257,7 @@ public class ResourceCentre {
 		boolean isReturned = false;
 
 		for (int i = 0; i < camcorderList.size(); i++) {
-			String assetTag = camcorderList.get(i).getAssetTag();
-			if (tag.equalsIgnoreCase(assetTag)
+			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 					&& camcorderList.get(i).getIsAvailable() == false) {
 				camcorderList.get(i).setIsAvailable(true);
 				camcorderList.get(i).setDueDate("");
@@ -295,8 +285,7 @@ public class ResourceCentre {
 		boolean isReturned = false;
 
 		for (int i = 0; i < chromebookList.size(); i++) {
-			String assetTag = chromebookList.get(i).getAssetTag();
-			if (tag.equalsIgnoreCase(assetTag)
+			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
 					&& chromebookList.get(i).getIsAvailable() == false) {
 				chromebookList.get(i).setIsAvailable(true);
 				chromebookList.get(i).setDueDate("");
