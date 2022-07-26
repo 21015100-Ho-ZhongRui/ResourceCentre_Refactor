@@ -14,11 +14,8 @@ public class Chromebook extends Item{
 	public String toString(){
 		// Write your codes here
 		String output = super.toString();
-<<<<<<< HEAD
 		output =String.format("%-63s %-20s", output, os);
-=======
 		output = String.format("%-63s %-20s", output, getOs());
->>>>>>> branch 'master' of https://github.com/21015100-Ho-ZhongRui/ResourceCentre_Refactor.git
 		return output;
 	}
 }
